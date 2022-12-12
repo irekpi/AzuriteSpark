@@ -1,0 +1,6 @@
+FROM docker.io/bitnami/spark:3
+
+ARG DELTA_CORE_VERSION='2.12:1.0.0'
+ARG HADOOP_AZURE='3.3.1'
+ARG AZURE_STORAGE='8.4.0'
+RUN spark-shell --packages org.apache.hadoop:hadoop-azure:3.3.1   || true

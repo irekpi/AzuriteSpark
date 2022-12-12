@@ -1,0 +1,14 @@
+version: '3'
+
+tasks:
+  up:
+    cmds:
+      - docker compose up -d
+  #Create blob
+  blob:
+    cmds:
+      - docker exec -it spark-tester-1 python /app/app/fake_blob.py
+  #Test if azurite works ok and reads csv file into spark
+  test:
+    cmds:
+      - docker exec -it spark-tester-1 spark-submit --packages org.apache.hadoop:hadoop-azure:3.3.1 /app/app/test_blob.py
